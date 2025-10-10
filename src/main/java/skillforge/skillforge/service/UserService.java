@@ -1,10 +1,11 @@
-package com.skillforge.skillforge.user;
+package skillforge.skillforge.service;
 
-import com.skillforge.skillforge.dto.CreateUserRequest;
-import com.skillforge.skillforge.dto.UserResponse;
+import skillforge.skillforge.repository.UserRepository;
+import skillforge.skillforge.dto.CreateUserRequest;
+import skillforge.skillforge.dto.UserResponse;
+import skillforge.skillforge.model.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +16,17 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public UserResponse create(CreateUserRequest req) {
-        if (userRepository.existsByEmail(req.email().toLowerCase().trim())) {
+    public UserResponse create(CreateUserRequest request) {
+        if (userRepository.existsByEmail(request.email().toLowerCase().trim())) {
             throw new IllegalArgumentException("An account with this email address already exists.");
         }
 
         User user = User.builder()
-                .email(req.email().toLowerCase().trim())
-                .passwordHash(passwordEncoder.encode(req.password()))
+                .email(request.email().toLowerCase().trim())
+                .passwordHash(passwordEncoder.encode(request.password()))
                 .build();
 
-        try {
-            user = userRepository.save(user);
-        } catch (DataIntegrityViolationException e) {
-            throw new IllegalArgumentException("An account with this email address already exists.");
-        }
+        user = userRepository.save(user);
 
         return new UserResponse(user.getId(), user.getEmail(), user.getCreatedAt());
     }

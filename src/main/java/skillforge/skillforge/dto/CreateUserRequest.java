@@ -1,4 +1,4 @@
-package com.skillforge.skillforge.dto;
+package skillforge.skillforge.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

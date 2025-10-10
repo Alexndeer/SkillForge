@@ -1,4 +1,4 @@
-package com.skillforge;
+package skillforge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

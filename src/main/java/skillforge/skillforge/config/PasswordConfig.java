@@ -1,4 +1,4 @@
-package com.skillforge.skillforge.config;
+package skillforge.skillforge.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

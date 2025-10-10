@@ -1,4 +1,4 @@
-package com.skillforge.skillforge.user;
+package skillforge.skillforge.model;
 
 import jakarta.persistence.*;
 import lombok.*;

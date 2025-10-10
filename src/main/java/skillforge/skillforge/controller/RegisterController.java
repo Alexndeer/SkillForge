@@ -1,8 +1,8 @@
-package com.skillforge.skillforge.web;
+package skillforge.skillforge.controller;
 
-import com.skillforge.skillforge.dto.CreateUserRequest;
-import com.skillforge.skillforge.dto.UserResponse;
-import com.skillforge.skillforge.user.UserService;
+import skillforge.skillforge.dto.CreateUserRequest;
+import skillforge.skillforge.dto.UserResponse;
+import skillforge.skillforge.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

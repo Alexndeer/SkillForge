@@ -1,4 +1,4 @@
-package com.skillforge.skillforge.dto;
+package skillforge.skillforge.dto;
 
 import java.time.OffsetDateTime;
 

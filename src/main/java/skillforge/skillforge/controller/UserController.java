@@ -1,7 +1,8 @@
-package com.skillforge.skillforge.user;
+package skillforge.skillforge.controller;
 
-import com.skillforge.skillforge.dto.CreateUserRequest;
-import com.skillforge.skillforge.dto.UserResponse;
+import skillforge.skillforge.dto.CreateUserRequest;
+import skillforge.skillforge.dto.UserResponse;
+import skillforge.skillforge.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,12 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest req) {
+    public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest request) {
 
-        return ResponseEntity.ok(userService.create(req));
+        return ResponseEntity.ok(userService.create(request));
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<UserResponse> get(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getById(id));
     }

@@ -1,4 +1,4 @@
-package com.skillforge.skillforge.config;
+package skillforge.skillforge.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,6 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(reg -> reg
-                        .requestMatchers("/api/users/**").permitAll()
                         .anyRequest().permitAll());
         return http.build();
     }

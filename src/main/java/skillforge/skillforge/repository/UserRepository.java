@@ -1,5 +1,6 @@
-package com.skillforge.skillforge.user;
+package skillforge.skillforge.repository;
 
+import skillforge.skillforge.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
