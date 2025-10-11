@@ -2,7 +2,7 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Регистрация — SkillForge</title>
+    <title>Авторизация — SkillForge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         :root { --bg:#0f1220; --card:#171a2b; --text:#e6e9f3; --muted:#a7b0c3; --accent:#6aa6ff; --danger:#ff6b6b; }
@@ -25,27 +25,29 @@
 <body>
 <div class="wrap">
     <div class="card">
-        <h1>Создать аккаунт</h1>
-        <p class="muted">Введите email и пароль. Пароль минимум 8 символов.</p>
+        <h1>Авторизация</h1>
+        <p class="muted">Введите логин и пароль.</p>
 
-        <form th:action="@{/auth/register}" method="post" class="row">
+        <div th:if="${param.error}" class="error">
+            Неправильный email или пароль.
+        </div>
+
+        <form th:action="@{/auth/login}" method="post" class="row">
             <div>
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+                <input id="email" name="email" type="email">
             </div>
 
             <div>
                 <label for="password">Пароль</label>
-                <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password" placeholder="••••••••">
+                <input id="password" name="password" type="password">
             </div>
 
-            <button type="submit">Зарегистрироваться</button>
+            <button type="submit">Войти</button>
         </form>
 
-        <div th:if="${error}" class="error" th:text="${error}"></div>
-
         <div class="footer">
-            Нажимая кнопку, вы соглашаетесь с <a href="#">условиями сервиса</a>.
+            Нет аккаунта? <a th:href="@{/auth/register}">Зарегистрироваться</a>
         </div>
     </div>
 </div>

@@ -20,20 +20,4 @@ public class GlobalExceptionHandler {
         ));
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<Map<String, Object>> handleNotFound(RuntimeException e) {
-
-        if (e.getMessage() != null && e.getMessage().contains("not found" )) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of(
-                    "error", "Not Found",
-                    "message", e.getMessage(),
-                    "timestamp", OffsetDateTime.now()
-            ));
-        }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
-                "error", "Server Error",
-                "message", e.getMessage(),
-                "timestamp", OffsetDateTime.now()
-        ));
-    }
 }
