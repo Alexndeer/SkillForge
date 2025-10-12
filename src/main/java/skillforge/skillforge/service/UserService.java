@@ -37,4 +37,11 @@ public class UserService {
                 () -> new IllegalArgumentException("User not found"));
         return new UserResponse(user.getId(), user.getEmail(), user.getCreatedAt());
     }
+
+    @Transactional
+    public UserResponse getByEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(
+                () -> new IllegalArgumentException("User not found"));
+        return new UserResponse(user.getId(), user.getEmail(), user.getCreatedAt());
+    }
 }
